@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking of Nearby Restaurants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="left">
+                <a href="#">Contact</a>
+                <span style="color: white; margin-left: 15px; font-weight: 500;">ZHAO Yue 24433462</span>
+                <span style="color: white; margin-left: 15px; font-weight: 500;">7350 Week8 Assignment</span>
+            </div>
+            <div class="right">
+                <a href="#" class="lang">EN/CH</a>
+                <a href="#">About Us</a>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <a href="#" class="logo">
+                <img src="images/title.png" alt="HK University Food Logo">
+            </a>
+            <nav>
+                <a href="#">Canteens</a>
+                <a href="#">Restaurants</a>
+                <a href="#">Health</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 style="font-size: 2.8em; font-weight: 700; color: #1E88E5; text-align: center; margin-bottom: 40px; margin-top: 0; padding: 15px 0; text-transform: none; letter-spacing: 1px; border: none; background: none; -webkit-background-clip: initial; background-clip: initial;">Ranking of Nearby Restaurants</h1>
+        <div class="upper">
+            <div class="university-list">
+                <h2>University</h2>
+                <div class="university-item" data-university="University A">
+                    Central and Western District - The University of Hong Kong
+                    <div class="uni-tags">
+                        <span class="tag">🏪 3 Restaurants</span>
+                        <span class="tag">💰 Avg. $67</span>
+                        <span class="tag">🥘 Western</span>
+                        <span class="tag">⏰ 9:00-21:00</span>
+                    </div>
+                </div>
+                <div class="university-item" data-university="University B">
+                    Sha Tin District - The Chinese University of Hong Kong
+                    <div class="uni-tags">
+                        <span class="tag">🏪 5 Restaurants</span>
+                        <span class="tag">💰 Avg. $77</span>
+                        <span class="tag">🍝 Italian</span>
+                        <span class="tag">⏰ 10:00-23:30</span>
+                    </div>
+                </div>
+                <div class="university-item" data-university="University C">
+                    Kowloon - The Hong Kong University of Science and Technology
+                    <div class="uni-tags">
+                        <span class="tag">🏪 4 Restaurants</span>
+                        <span class="tag">💰 Avg. $52</span>
+                        <span class="tag">🍔 American</span>
+                        <span class="tag">⏰ 11:00-22:00</span>
+                    </div>
+                </div>
+                <div class="university-item" data-university="University D">
+                    Kowlozon - City University of Hong Kong
+                    <div class="uni-tags">
+                        <span class="tag">🏪 3 Restaurants</span>
+                        <span class="tag">💰 Avg. $33</span>
+                        <span class="tag">🌮 Mexican</span>
+                        <span class="tag">⏰ 10:00-20:00</span>
+                    </div>
+                </div>
+                <div class="university-item" data-university="University E">
+                    Hung Hom - The Hong Kong Polytechnic University
+                    <div class="uni-tags">
+                        <span class="tag">🏪 2 Restaurants</span>
+                        <span class="tag">💰 Avg. $55</span>
+                        <span class="tag">🍖 BBQ</span>
+                        <span class="tag">⏰ 10:00-22:00</span>
+                    </div>
+                </div>
+                <div class="university-item" data-university="University F">
+                    Kowloon City - Hong Kong Baptist University
+                    <div class="uni-tags">
+                        <span class="tag">🏪 3 Restaurants</span>
+                        <span class="tag">💰 Avg. $58</span>
+                        <span class="tag">🍜 Asian</span>
+                        <span class="tag">⏰ 10:00-22:30</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-list">
+                <h2 id="restaurant-header">Today's Recommended Beauty</h2>
+                <div id="recommended-dishes"></div>
+                <div id="restaurants"></div>
+            </div>
+        </div>
+        <div class="detail" id="detail">
+            <h2>Restaurant Details</h2>
+            <div class="image-container">
+                <div class="arrow left-arrow" onclick="changeImages(-1)">❮</div>
+                <div id="restaurant-image-container">
+                    ${generateImageElements(images, currentImageIndex)}
+                </div>
+                <div class="arrow right-arrow" onclick="changeImages(1)">❯</div>
+            </div>
+            <div id="restaurant-info"></div>
+            <h3>Recommended Dishes</h3>
+            <div id="dishes"></div>
+        </div>
+        <div class="feedback-container">
+            <h3>Dish Reviews</h3>
+            <textarea id="feedback" class="feedback-input" rows="4" placeholder="Enter your review..."></textarea>
+            <button class="submit-feedback" onclick="submitFeedback()">Submit Review</button>
+            <div class="feedback-list" id="feedback-list">
+                <div class="feedback-content" id="feedback-content"></div>
+            </div>
+        </div>
+        <div class="video-container">
+            <h3>Video Recommendation</h3>
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/kQR3ujSIb1g" frameborder="0"></iframe>
+                    <div class="video-info">
+                        <h4 class="video-title">Eating in Hong Kong with Only $100HKD ($13USD)</h4>
+                        <p class="video-description">A budget-friendly guide to delicious local food in Hong Kong.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/CgenjHXjvoQ" frameborder="0"></iframe>
+                    <div class="video-info">
+                        <h4 class="video-title">2025 Hong Kong Food Guide</h4>
+                        <p class="video-description">Discover a hidden gem in the city.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/SO0W66oFN68" frameborder="0"></iframe>
+                    <div class="video-info">
+                        <h4 class="video-title">香港大學食堂怎麼樣？餐食價格便宜嗎？|香港大學旅行Vlog</h4>
+                        <p class="video-description">A family-friendly restaurant review.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const recommendedDishes = [
+            { name: "<strong>Signature Beef Noodles</strong>", description: "\"Classic and delicious, rich broth, tender meat.\"", image: "images/Signature Beef Noodles.jpeg" },
+            { name: "<strong>Seafood Fried Rice</strong>", description: "\"Fresh and fragrant seafood, distinct rice grains, excellent taste.\"", image: "images/Seafood Fried Rice.jpeg" },
+            { name: "<strong>Fried Chicken Wings</strong>", description: "\"Crispy on the outside and tender on the inside, unique flavor, can't stop eating.\"", image: "images/Fried Chicken Wings.jpeg" },
+            { name: "<strong>Stir-fried Seasonal Vegetables</strong>", description: "\"Fresh seasonal vegetables, maintaining the original taste, healthy and delicious.\"", image: "images/Stir-fried Seasonal Vegetables.jpeg" },
+            { name: "<strong>Beef Fried Noodles</strong>", description: "\"Tender beef, flavorful noodles, very popular.\"", image: "images/Beef Fried Noodles.jpeg" },
+            { name: "<strong>Signature Dessert</strong>", description: "\"Sweet and delicious, a dessert that leaves a lasting impression.\"", image: "images/Signature Dessert.jpeg" }
+        ];
+
+        const restaurantData = {
+            "University A": [
+                { name: "Chill and Grill", rating: "4.5", price: "$200", phone: "1234-5678", hours: "10:00-22:00", image: "images/Chill and Grill.jpg", dishes: [
+                    { name: "Spicy Noodles", taste: "Spicy", price: "$112", comment: "Noodles tossed in a spicy sauce.", image: "images/Spicy Noodles.jpeg" },
+                    { name: "Vegetable Stir-fry", taste: "Fresh", price: "$210", comment: "A mix of fresh vegetables.", image: "images/Vegetable Stir-fry.jpeg" },
+                    { name: "Chicken Dumplings", taste: "Savory", price: "$215", comment: "Steamed dumplings filled with chicken.", image: "images/Chicken Dumplings.jpeg" }
+                ]},
+                { name: "Alfafa Cafe", rating: "4.2", price: "$180", phone: "2345-6789", hours: "10:00-21:30", image: "images/Italian Bistro.jpeg", dishes: [
+                    { name: "Grilled Salmon", taste: "Rich", price: "$125", comment: "Perfectly grilled salmon with herbs.", image: "images/Grilled Salmo.jpeg" },
+                    { name: "Shrimp Tacos", taste: "Zesty", price: "$115", comment: "Tacos filled with fresh shrimp.", image: "images/Shrimp Tacos.jpeg" },
+                    { name: "Seafood Paella", taste: "Flavorful", price: "$310", comment: "A classic Spanish rice dish.", image: "images/Seafood Paella.jpeg" }
+                ]},
+                { name: "TBC", rating: "4.8", price: "$120", phone: "3456-7890", hours: "11:00-23:00", image: "images/TBC.jpg", dishes: [
+                    { name: "Grilled Spicy Chicken", taste: "Spicy", price: "$120", comment: "Juicy chicken marinated in spices.", image: "images/Grilled Spicy Chicken.jpeg" },
+                    { name: "BBQ Chicken Wings", taste: "Smoky", price: "$115", comment: "Wings with a smoky BBQ sauce.", image: "images/BBQ Chicken Wings.jpeg" },
+                    { name: "Chicken Caesar Salad", taste: "Crispy", price: "$112", comment: "Fresh salad with grilled chicken.", image: "images/Chicken Caesar Salad.jpeg" }
+                ]}
+            ],
+            "University B": [
+                { name: "The Shack", rating: "4.6", price: "$95", phone: "6789-0123", hours: "10:00-21:00", image: "images/The Shack.jpg", dishes: [
+                    { name: "Butter Chicken", taste: "Creamy", price: "$118", comment: "Rich and creamy chicken curry.", image: "images/Butter Chicken.jpeg" },
+                    { name: "Vegetable Biryani", taste: "Spicy", price: "$116", comment: "Spiced rice with mixed vegetables.", image: "images/Vegetable Biryani.jpeg" },
+                    { name: "Paneer Tikka", taste: "Smoky", price: "$114", comment: "Grilled cheese cubes with spices.", image: "images/Paneer Tikka.jpeg" }
+                ]},
+                { name: "All Day Coffee ", rating: "4.3", price: "$85", phone: "7890-1234", hours: "10:00-22:30", image: "images/VA BENE Italiano.jpg", dishes: [
+                    { name: "Spaghetti Carbonara", taste: "Creamy", price: "$118", comment: "Classic Italian pasta with bacon.", image: "images/Veggie Burger.jpeg" },
+                    { name: "Penne Arrabbiata", taste: "Spicy", price: "$116", comment: "Penne pasta in spicy tomato sauce.", image: "images/Penne Arrabbiata.jpeg" },
+                    { name: "Fettuccine Alfredo", taste: "Rich", price: "$120", comment: "Fettuccine in creamy Alfredo sauce.", image: "images/Fettuccine Alfredo.jpeg" }
+                ]},
+                { name: "Y Pasta", rating: "4.7", price: "$110", phone: "8901-2345", hours: "11:00-23:30", image: "images/Y Pasta.jpg", dishes: [
+                    { name: "California Roll", taste: "Fresh", price: "$112", comment: "Crab and avocado roll.", image: "images/California Roll.jpeg" },
+                    { name: "Spicy Tuna Roll", taste: "Spicy", price: "$115", comment: "Tuna with spicy sauce.", image: "images/Spicy Tuna Roll.jpeg" },
+                    { name: "Sashimi Platter", taste: "Savory", price: "$125", comment: "Assorted fresh sashimi.", image: "images/Sashimi Platter.jpeg" }
+                ]}
+            ],
+            "University C": [
+                { name: "UniQue", rating: "4.4", price: "$90", phone: "9012-3456", hours: "10:00-20:00", image: "images/UniQue.jpeg", dishes: [
+                    { name: "Quinoa Salad", taste: "Nutty", price: "$112", comment: "Healthy quinoa with vegetables.", image: "images/Signature Dessert.jpeg" },
+                    { name: "French Fries", taste: "Savory", price: "$115", comment: "A delicious plant-based burger.", image: "images/French Fries.jpeg" },
+                    { name: "Stuffed Bell Peppers", taste: "Hearty", price: "$114", comment: "Bell peppers stuffed with rice and beans.", image: "images/Stuffed Bell Peppers.jpeg" }
+                ]},
+                { name: "UniBistro & Bar", rating: "4.1", price: "$175", phone: "0123-4567", hours: "10:00-21:00", image: "images/UniBistro & Bar.jpg", dishes: [
+                    { name: "Classic Cheeseburger", taste: "Juicy", price: "$112", comment: "A classic beef burger with cheese.", image: "images/Classic Cheeseburger.jpeg" },
+                    { name: "Veggie Burger", taste: "Savory", price: "$110", comment: "A delicious vegetarian option.", image: "images/Veggie Burger.jpeg" },
+                    { name: "Onion Rings", taste: "Crispy", price: "$98", comment: "Crispy onion rings to accompany your meal.", image: "images/Onion Rings.jpeg" }
+                ]},
+                { name: "American Diner", rating: "4.9", price: "$130", phone: "1234-5678", hours: "11:00-22:00", image: "images/UniBistro & Bar.jpg", dishes: [
+                    { name: "Chocolate Lava Cake", taste: "Decadent", price: "$110", comment: "Rich chocolate cake with a molten center.", image: "images/Chocolate Lava Cake.jpeg" },
+                    { name: "Cheesecake", taste: "Creamy", price: "$80", comment: "Classic cheesecake with a graham cracker crust.", image: "images/Veggie Pizza.jpeg" },
+                    { name: "Fruit Tart", taste: "Fresh", price: "$90", comment: "A tart filled with fresh fruits.", image: "images/Fruit Tart.jpeg" }
+                ]}
+            ],
+            "University D": [
+                { name: "Ebeneezer's Kebabs & Pizzeria", rating: "4.3", price: "$170", phone: "2345-6789", hours: "10:00-19:00", image: "images/Tiramisu.jpeg", dishes: [
+                    { name: "Grilled Meat Platter", taste: "Hearty", price: "$160", comment: "A variety of meats to satisfy your taste buds.", image: "images/Grilled Meat Platter.jpeg" },
+                    { name: "Grilled Vegetables", taste: "Healthy", price: "$125", comment: "Fresh vegetables, rich in nutrients.", image: "images/Grilled Vegetables.jpeg" },
+                    { name: "French Fries", taste: "Crispy", price: "$115", comment: "A classic snack, perfect with dipping sauces.", image: "images/French Fries.jpeg" }
+                ]},
+                { name: "Lodge Bistro", rating: "4.5", price: "$110", phone: "3456-7890", hours: "10:00-20:30", image: "images/Lodge Bistro.jpg", dishes: [
+                    { name: "Chicken Tacos", taste: "Spicy", price: "$110", comment: "Tender chicken in soft tortillas.", image: "images/Chicken Tacos.jpeg" },
+                    { name: "Beef Tacos", taste: "Savory", price: "$112", comment: "Seasoned beef with fresh toppings.", image: "images/Beef Tacos.jpeg" },
+                    { name: "Veggie Tacos", taste: "Fresh", price: "$99", comment: "Tacos filled with fresh vegetables.", image: "images/Veggie Tacos.jpeg" }
+                ]},
+                { name: "VA BENE Italiano", rating: "4.6", price: "$120", phone: "4567-8901", hours: "11:00-22:00", image: "images/VA BENE Italiano.jpg", dishes: [
+                    { name: "Asian Fusion Noodles", taste: "Savory", price: "$115", comment: "Noodles with an Asian twist.", image: "images/Asian Fusion Noodles.jpeg" },
+                    { name: "Mediterranean Platter", taste: "Hearty", price: "$120", comment: "A mix of Mediterranean delights.", image: "images/Mediterranean Platter.jpeg" },
+                    { name: "Sushi Burrito", taste: "Fresh", price: "$121", comment: "A burrito filled with sushi ingredients.", image: "images/Sushi Burrito.jpeg" }
+                ]}
+            ],
+            "University E": [
+                { name: "Lassana Coffee", rating: "4.2", price: "$180", phone: "5678-9012", hours: "10:00-21:00", image: "images/Lassana Coffee.webp", dishes: [
+                    { name: "BBQ Ribs", taste: "Tender", price: "$125", comment: "Slow-cooked ribs with BBQ sauce.", image: "images/BBQ Ribs.jpeg" },
+                    { name: "Pulled Pork Sandwich", taste: "Savory", price: "$115", comment: "Pulled pork served on a bun.", image: "images/Pulled Pork Sandwich.jpeg" },
+                    { name: "Cornbread", taste: "Sweet", price: "$95", comment: "Sweet cornbread to accompany your meal.", image: "images/Cornbread.jpeg" }
+                ]},
+                { name: "YAKINIKU KAKURA", rating: "4.4", price: "$95", phone: "6789-0123", hours: "10:00-22:00", image: "images/YAKINIKU KAKURA.jpg", dishes: [
+                    { name: "Margherita Pizza", taste: "Fresh", price: "$115", comment: "Classic pizza with fresh ingredients.", image: "images/Margherita Pizza.jpeg" },
+                    { name: "Lasagna", taste: "Rich", price: "$220", comment: "Layers of pasta, cheese, and meat.", image: "images/Lasagna.jpeg" },
+                    { name: "Tiramisu", taste: "Creamy", price: "$88", comment: "Classic Italian dessert with coffee flavor.", image: "images/Tiramisu.jpeg" }
+                ]},
+                { name: "Duet Cuts & Cups", rating: "4.8", price: "$100", phone: "7890-1234", hours: "11:00-23:00", image: "images/Duet Cuts & Cups.jpg", dishes: [
+                    { name: "Chocolate Chip Cookies", taste: "Sweet", price: "$57", comment: "Freshly baked cookies.", image: "images/Chocolate Chip Cookies.jpeg" },
+                    { name: "Cupcakes", taste: "Frosted", price: "$93", comment: "Delicious cupcakes with various flavors.", image: "images/Cupcakes.jpeg" },
+                    { name: "Ice Cream Sundae", taste: "Creamy", price: "$67", comment: "A classic sundae with your choice of toppings.", image: "images/Ice Cream Sundae.jpeg" }
+                ]}
+            ],
+            "University F": [
+                { name: "Alfafa", rating: "4.5", price: "$190", phone: "8901-2345", hours: "10:00-20:00", image: "images/alfafa Cafe.webp", dishes: [
+                    { name: "Shrimp Dumplings", taste: "Savory", price: "$121", comment: "Steamed dumplings filled with shrimp.", image: "images/Shrimp Dumplings.jpeg" },
+                    { name: "Pork Buns", taste: "Juicy", price: "$101", comment: "Soft buns filled with pork.", image: "images/Pork Buns.jpeg" },
+                    { name: "Vegetable Spring Rolls", taste: "Crispy", price: "$80", comment: "Crispy spring rolls with vegetables.", image: "images/Vegetable Spring Rolls.jpeg" }
+                ]},
+                { name: "Pokka Café ", rating: "4.1", price: "$175", phone: "9012-3456", hours: "10:00-21:00", image: "images/Pokka Café.jpeg", dishes: [
+                    { name: "Pepperoni Pizza", taste: "Spicy", price: "$125", comment: "Classic pepperoni pizza.", image: "images/Pepperoni Pizza.jpeg" },
+                    { name: "Veggie Pizza", taste: "Fresh", price: "$124", comment: "Pizza topped with fresh vegetables.", image: "images/Veggie Pizza.jpeg" },
+                    { name: "Cheese Pizza", taste: "Cheesy", price: "$222", comment: "A classic cheese pizza.", image: "images/Pokka Café.jpeg" }
+                ]},
+                { name: "Itamama Bistro", rating: "4.7", price: "$110", phone: "0123-4567", hours: "11:00-22:30", image: "images/Itamama Bistro.jpg", dishes: [
+                    { name: "Szechuan Chicken", taste: "Spicy", price: "$20", comment: "Chicken cooked in spicy Szechuan sauce.", image: "images/Szechuan Chicken.jpeg" },
+                    { name: "Mapo Tofu", taste: "Savory", price: "$155", comment: "Tofu in a spicy sauce.", image: "images/Spicy Chicken Grill.jpeg" },
+                    { name: "Chili Noodles", taste: "Fiery", price: "$122", comment: "Noodles tossed in spicy chili sauce.", image: "images/Pork Buns.jpeg" }
+                ]}
+            ],
+        };
+
+        const feedbacks = [
+            "This dish is delicious!",
+            "Great service and nice ambiance.",
+            "Highly recommend the beef noodles!",
+            "The fried rice is a must-try!",
+            "The restaurant was very clean.",
+            "I loved the dessert here!",
+            "Friendly staff and quick service.",
+            "The portions are generous.",
+            "Very tasty and well-presented.",
+            "I will definitely come back!"
+        ];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const recommendedDiv = document.getElementById('recommended-dishes');
+            recommendedDishes.forEach(dish => {
+                const div = document.createElement('div');
+                div.className = 'dish';
+                div.innerHTML = `
+                    <img src="${dish.image}" alt="${dish.name}">
+                    <div class="dish-content">
+                        <div class="dish-name">${dish.name}</div>
+                        <div class="dish-description">${dish.description}</div>
+                    </div>
+                `;
+                recommendedDiv.appendChild(div);
+            });
+
+            const feedbackContent = document.getElementById('feedback-content');
+            feedbacks.forEach(feedback => {
+                const div = document.createElement('div');
+                div.className = 'feedback-item';
+                div.textContent = feedback;
+                feedbackContent.appendChild(div);
+            });
+
+            const feedbackList = document.getElementById('feedback-list');
+            feedbackList.scrollLeft = 0; // 开始时动到最左侧
+            setInterval(() => {
+                feedbackList.scrollLeft += 1; // 每次增加1px
+                if (feedbackList.scrollLeft >= feedbackContent.scrollWidth - feedbackList.clientWidth) {
+                    feedbackList.scrollLeft = 0; // 回到起始位置
+                }
+            }, 50); // 每50毫秒更新一次
+        });
+
+        document.querySelectorAll('.university-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const university = this.getAttribute('data-university');
+                const restaurants = restaurantData[university];
+                const restaurantDiv = document.getElementById('restaurants');
+                const header = document.getElementById('restaurant-header');
+
+                header.style.display = 'none';
+                document.getElementById('recommended-dishes').style.display = 'none';
+
+                restaurantDiv.innerHTML = '';
+                header.textContent = 'Restaurant Information';
+
+                const titleDiv = document.createElement('h2');
+                titleDiv.className = 'restaurant-title';
+                titleDiv.textContent = 'Top 3 Restaurants';
+                restaurantDiv.appendChild(titleDiv);
+
+                restaurants.forEach(restaurant => {
+                    const div = document.createElement('div');
+                    div.className = 'restaurant-item';
+                    div.innerHTML = `
+                        <img src="${restaurant.image}" alt="${restaurant.name}">
+                        <div class="details">
+                            <strong>${restaurant.name}</strong><br>
+                            Score: ${getStarRating(parseFloat(restaurant.rating))} (${restaurant.rating})<br>
+                            Price: ${restaurant.price}<br>
+                            Phone: ${restaurant.phone}<br>
+                            Hours: ${restaurant.hours}
+                        </div>
+                    `;
+                    div.addEventListener('click', () => showDetails(restaurant));
+                    restaurantDiv.appendChild(div);
+                });
+            });
+        });
+
+        function showDetails(restaurant) {
+            const images = [
+                restaurant.image,
+                restaurant.dishes[0].image,
+                restaurant.dishes[1].image,
+                restaurant.dishes[2].image
+            ];
+            
+            let currentImageIndex = 0;
+
+            document.getElementById('detail').innerHTML = `
+                <h2>Restaurant Details</h2>
+                <div class="image-container">
+                    <div class="arrow left-arrow" onclick="changeImages(-1)">❮</div>
+                    <div id="restaurant-image-container">
+                        ${generateImageElements(images, currentImageIndex)}
+                    </div>
+                    <div class="arrow right-arrow" onclick="changeImages(1)">❯</div>
+                </div>
+                <div id="restaurant-info"></div>
+                <h3>Recommended Dishes</h3>
+                <div id="dishes"></div>
+            `;
+
+            window.currentImageIndex = currentImageIndex;
+            window.restaurantImages = images;
+            window.changeImages = function(direction) {
+                currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+                document.getElementById('restaurant-image-container').innerHTML = 
+                    generateImageElements(images, currentImageIndex);
+            };
+
+            restaurant.dishes.forEach(dish => {
+                const div = document.createElement('div');
+                div.className = 'dish';
+                div.innerHTML = `<img src="${dish.image}" alt="${dish.name}"><strong>${dish.name}</strong> - ${dish.comment} (Taste: ${dish.taste}, Price: ${dish.price})`;
+                document.getElementById('dishes').appendChild(div);
+            });
+
+            document.getElementById('detail').style.display = 'block'; // 显示详细信息部分
+        }
+
+        function submitFeedback() {
+            const feedbackInput = document.getElementById('feedback');
+            const feedbackText = feedbackInput.value.trim();
+            
+            if (feedbackText === '') {
+                alert('Please fill in the evaluation content.');
+                return;
+            }
+
+            let feedbackDisplay = document.getElementById('feedback-display');
+            if (!feedbackDisplay) {
+                feedbackDisplay = document.createElement('div');
+                feedbackDisplay.id = 'feedback-display';
+                feedbackDisplay.style.marginTop = '20px';
+                document.querySelector('.feedback-container').insertBefore(
+                    feedbackDisplay,
+                    document.getElementById('feedback-list')
+                );
+            }
+
+            const newFeedback = document.createElement('div');
+            newFeedback.className = 'feedback-display new-feedback';
+            newFeedback.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #2c3e50; font-weight: 500;">New Review</span>
+                    <span style="color: #666; font-size: 0.9em;">${new Date().toLocaleTimeString()}</span>
+                </div>
+                <div style="margin-top: 8px; color: #444;">${feedbackText}</div>
+            `;
+
+            feedbackDisplay.insertBefore(newFeedback, feedbackDisplay.firstChild);
+
+            feedbacks.push(feedbackText);
+            displayFeedbacks();
+
+            feedbackInput.value = '';
+
+            setTimeout(() => {
+                newFeedback.classList.remove('new-feedback');
+            }, 500);
+        }
+
+        function displayFeedbacks() {
+            const feedbackContent = document.getElementById('feedback-content');
+            feedbackContent.innerHTML = '';
+            feedbacks.forEach(feedback => {
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'feedback-item';
+                feedbackDiv.textContent = feedback;
+                feedbackContent.appendChild(feedbackDiv);
+            });
+        }
+
+        function getRandomAddress() {
+            const districts = [
+                "Central and Western District",
+                "Wan Chai District",
+                "Eastern District",
+                "Southern District",
+                "Yau Tsim Mong District",
+                "Sham Shui Po District",
+                "Kowloon City District",
+                "Wong Tai Sin District",
+                "Kwun Tong District",
+                "Tsuen Wan District",
+                "Sha Tin District"
+            ];
+
+            const streets = [
+                "Queen's Road",
+                "Des Voeux Road",
+                "Nathan Road",
+                "Canton Road",
+                "Hennessy Road",
+                "Johnston Road",
+                "Gloucester Road",
+                "Connaught Road",
+                "Hollywood Road",
+                "Argyle Street"
+            ];
+
+            const buildings = [
+                "Prosperity Tower",
+                "Fortune Centre",
+                "Golden Plaza",
+                "Central Building",
+                "Victoria House",
+                "Dragon Centre",
+                "Harbour View Court",
+                "Ocean View Building",
+                "International Plaza",
+                "Metropolitan Complex"
+            ];
+
+            const floor = Math.floor(Math.random() * 42) + 1;
+            const unit = String.fromCharCode(65 + Math.floor(Math.random() * 6)); // A到F
+            
+            const streetNumber = Math.floor(Math.random() * 999) + 1;
+
+            const district = districts[Math.floor(Math.random() * districts.length)];
+            const street = streets[Math.floor(Math.random() * streets.length)];
+            const building = buildings[Math.floor(Math.random() * buildings.length)];
+
+            return `${floor}/F ${unit}, ${building}, ${streetNumber} ${street}, ${district}, Hong Kong`;
+        }
+
+        function getStarRating(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            let stars = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '★';
+            }
+            
+            if (hasHalfStar) {
+                stars += '☆';
+            }
+            
+            const remainingStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < remainingStars; i++) {
+                stars += '☆';
+            }
+            
+            return stars;
+        }
+
+        function initImageDrag() {
+            const container = document.querySelector('.image-container');
+            const image = document.getElementById('restaurant-image');
+            let isDragging = false;
+            let startPos = 0;
+            let currentTranslate = 0;
+
+            container.addEventListener('mousedown', startDragging);
+            container.addEventListener('mousemove', drag);
+            container.addEventListener('mouseup', stopDragging);
+            container.addEventListener('mouseleave', stopDragging);
+            container.addEventListener('touchstart', startDragging);
+            container.addEventListener('touchmove', drag);
+            container.addEventListener('touchend', stopDragging);
+
+            function startDragging(e) {
+                isDragging = true;
+                startPos = getPositionX(e);
+                container.style.cursor = 'grabbing';
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const currentPosition = getPositionX(e);
+                const diff = currentPosition - startPos;
+                currentTranslate = diff;
+                
+                if (Math.abs(currentTranslate) > 100) {
+                    if (currentTranslate > 0) {
+                        showPreviousImage();
+                    } else {
+                        showNextImage();
+                    }
+                    stopDragging();
+                    return;
+                }
+                
+                image.style.transform = `translateX(${currentTranslate}px)`;
+            }
+
+            function stopDragging() {
+                isDragging = false;
+                container.style.cursor = 'grab';
+                image.style.transform = 'translateX(0)';
+                currentTranslate = 0;
+            }
+
+            function getPositionX(e) {
+                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            }
+        }
+
+        function generateImageElements(images, startIndex) {
+            let html = '';
+            for (let i = 0; i < 3; i++) {
+                const index = (startIndex + i + images.length) % images.length;
+                html += `<img class="restaurant-image" src="${images[index]}" alt="Restaurant Image">`;
+            }
+            return html;
+        }
+    </script>
+</body>
+</html>

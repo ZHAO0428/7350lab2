@@ -1,0 +1,790 @@
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 50%, #d1c4e9 100%);
+    color: #2c3e50;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+h1, h2, h3, .restaurant-title {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.top-nav a, .bottom-nav a {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+}
+
+.bottom-nav .logo {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-weight: 700;
+}
+
+.university-item, .restaurant-item {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-weight: 500;
+}
+
+.dish-description {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.feedback-item, .feedback-input {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.submit-feedback {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+}
+
+header {
+    border-bottom: 1px solid rgba(30, 136, 229, 0.1);
+    margin: 0; 
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 15px rgba(30, 136, 229, 0.1);
+}
+
+.top-nav {
+    background: linear-gradient(120deg, #2196F3, #1976D2);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(33, 150, 243, 0.2);
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.top-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.bottom-nav {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+}
+
+.bottom-nav .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1E88E5;
+    text-decoration: none;
+}
+
+.bottom-nav nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.bottom-nav nav a:hover {
+    color: #1E88E5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+.container:hover {
+    transform: none;
+    box-shadow: none;
+}
+h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding: 25px 0;
+    letter-spacing: 3px;
+    color: transparent;
+    background: linear-gradient(120deg, #1E88E5, #64B5F6, #90CAF9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 15px rgba(33, 150, 243, 0.5);
+    border-bottom: 4px solid #1E88E5;
+    border-top: 4px solid #1E88E5;
+}
+h1::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: -1;
+    background: linear-gradient(120deg, #2196F3, #64B5F6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: blur(8px);
+    opacity: 0.7;
+}
+h1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        #2196F3,
+        #64B5F6,
+        #90CAF9,
+        #64B5F6,
+        #2196F3,
+        transparent
+    );
+    animation: borderGlow 3s linear infinite;
+}
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+@keyframes borderGlow {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+}
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+}
+h2, h3 {
+    position: relative;
+    padding: 15px 0;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    background: linear-gradient(120deg, #2196F3, #64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.university-list h2 {
+    background: linear-gradient(120deg, #2196F3, #42A5F5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.restaurant-title {
+    background: linear-gradient(120deg, #2196F3, #42A5F5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+#detail h2 {
+    background: linear-gradient(120deg, #2196F3, #64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#detail h3 {
+    background: linear-gradient(120deg, #42A5F5, #64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.feedback-container h3 {
+    background: linear-gradient(120deg, #64B5F6, #90CAF9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+h2::after, h3::after, .restaurant-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg,
+        rgba(30, 136, 229, 0) 0%,
+        #2196F3 50%,
+        rgba(30, 136, 229, 0) 100%
+    );
+    opacity: 0.5;
+    transition: width 0.3s ease;
+}
+h2:hover::after, h3:hover::after, .restaurant-title:hover::after {
+    width: 100px;
+}
+@keyframes titlePulse {
+    0% {
+        text-shadow: 0 0 8px rgba(30, 136, 229, 0.2);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(30, 136, 229, 0.4);
+    }
+}
+@media (max-width: 768px) {
+    h2, h3, .restaurant-title {
+        font-size: 1.5em;
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.upper {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.university-list, .restaurant-list {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    padding: 30px;
+    flex: 1;
+}
+.restaurant-list {
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(30, 136, 229, 0.15);
+    border: 1px solid rgba(30, 136, 229, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.restaurant-item {
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    margin-bottom: 20px; /* 为每个餐厅项添加底部间距 */
+}
+
+.restaurant-item img {
+    width: 100px; /* 固定宽度 */
+    height: 100px; /* 固高度 */
+    object-fit: cover; /* 保持比例，裁剪多余部分 */
+    border-radius: 5px; /* 可选：圆角 */
+    margin-right: 15px; /* 图片与文字之间的间距 */
+}
+
+.restaurant-item .details {
+    text-align: left; /* 文字左对齐 */
+}
+
+.university-item, .restaurant-item {
+    cursor: pointer;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid rgba(30, 136, 229, 0.1);
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.university-item:hover, .restaurant-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(30, 136, 229, 0.15);
+    border-color: rgba(33, 150, 243, 0.3);
+}
+.dish {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid rgba(30, 136, 229, 0.1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.dish:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(30, 136, 229, 0.15);
+    border-color: rgba(33, 150, 243, 0.3);
+}
+.dish img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.feedback-container {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    padding: 30px;
+    margin-top: 30px;
+}
+.feedback-input {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid rgba(30, 136, 229, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    font-size: 1em;
+}
+.feedback-input:focus {
+    border-color: #1E88E5;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+.submit-feedback {
+    background: linear-gradient(120deg, #1E88E5, #64B5F6);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.submit-feedback:hover {
+    background: linear-gradient(120deg, #64B5F6, #42A5F5);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+}
+.feedback-list {
+    display: flex;
+    overflow: hidden; /* 隐藏溢出内容 */
+    position: relative;
+    width: 100%;
+    height: 50px; /* 控制高度 */
+}
+.feedback-content {
+    display: flex;
+    animation: scroll s linear infinite; /* 滚动动画 */
+}
+.feedback-item {
+    margin-right: 50px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.feedback-item:hover {
+    background: linear-gradient(145deg, #f0f7ff, #ffffff);
+    transform: translateY(-2px);
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* 从右侧开始 */
+    }
+    100% {
+        transform: translateX(-100%); /* 向左侧移动到结束位置 */
+    }
+}
+.detail {
+    display: none;
+    margin-top: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+.detail[style*="display: block"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.05);
+}
+#restaurant-image {
+    width: 400px;  /* Fixed width */
+    height: 300px; /* Fixed height */
+    object-fit: cover; /* Maintains aspect ratio */
+    display: block; /* Makes centering work */
+    margin: 0 auto; /* Centers the image */
+}
+
+#restaurant-info {
+    text-align: center; /* Centers the text */
+    margin-top: 15px;
+}
+.restaurant-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+@keyframes titleGlow {
+    from { text-shadow: 0 0 5px rgba(30, 136, 229, 0.5); }
+    to { text-shadow: 0 0 15px rgba(30, 136, 229, 0.8); }
+}
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.new-feedback {
+    animation: slideIn 0.5s ease-in;
+}
+
+.feedback-display {
+    margin: 15px 0;
+    padding: 15px;
+    background: linear-gradient(145deg, #ffffff, #f0f7ff);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.05);
+    transition: all 0.3s ease;
+}
+
+.feedback-display:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(30, 136, 229, 0.1);
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+#restaurant-image-container {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
+}
+
+.restaurant-image {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(30, 136, 229, 0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    z-index: 2;
+}
+
+.arrow:hover {
+    background: rgba(30, 136, 229, 0.9);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+/* 添加食物图标装饰 */
+.university-item::before {
+    content: '🏫';
+    margin-right: 10px;
+}
+
+.restaurant-item::before {
+    content: '🍳';
+    margin-right: 10px;
+}
+
+.dish::before {
+    content: '🥘';
+    margin-right: 10px;
+}
+
+.feedback-item::before {
+    content: '✨';
+    margin-right: 5px;
+}
+
+h3::before {
+    content: '👨‍🍳';
+    margin-right: 10px;
+}
+
+#detail h2::before {
+    content: '🏪';
+    margin-right: 10px;
+}
+
+.university-list h2::before {
+    content: '🎓';
+    margin-right: 10px;
+}
+
+.restaurant-list h2::before {
+    content: '🍽️';
+    margin-right: 10px;
+}
+
+.uni-tags {
+    margin-top: 8px;
+    font-size: 0.85em;
+}
+
+.tag {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: rgba(30, 136, 229, 0.1);
+    color: #1E88E5;
+    font-size: 0.9em;
+}
+
+.tag:hover {
+    background: rgba(30, 136, 229, 0.2);
+    transform: translateY(-1px);
+}
+
+.video-container {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.video-item {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(30, 136, 229, 0.15);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+}
+
+.video-info {
+    padding: 15px;
+}
+
+.video-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.video-description {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.video-container h3::before {
+    content: '🎬';
+    margin-right: 10px;
+}
+
+.university-item, .restaurant-item, .dish, .feedback-display, .video-item {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 12px;
+}
+
+.university-item:hover, .restaurant-item:hover, .dish:hover, .feedback-display:hover, .video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(30, 136, 229, 0.15);
+}
+
+.university-item::after, .restaurant-item::after, .dish::after, .video-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(30, 136, 229, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.university-item:hover::after, .restaurant-item:hover::after, .dish:hover::after, .video-item:hover::after {
+    opacity: 1;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+}
+
+h2, h3 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.university-list, .restaurant-list, .detail, .feedback-container, .video-container {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@media (max-width: 992px) {
+    .upper {
+        flex-direction: column;
+    }
+    
+    .university-list, .restaurant-list {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+    }
+    
+    h2, h3 {
+        font-size: 1.5em;
+    }
+}
+
+.restaurant-list h2 {
+    font-size: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.university-list h2, .feedback-container h3, .video-container h3 {
+    font-size: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
